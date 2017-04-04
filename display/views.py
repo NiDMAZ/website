@@ -7,7 +7,13 @@ import datetime
 
 
 def homepage(request):
-    return render(request, 'display/homepage.html', {})
+    today_date = datetime.datetime.now()
+
+    today_day = today_date.strftime("%d")
+    today_month = today_date.strftime("%B")
+
+    return render(request, 'display/homepage.html', {'today_day': today_day,
+                                                     'today_month': today_month})
 
 
 def current_datetime(request):

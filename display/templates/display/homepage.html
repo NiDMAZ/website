@@ -2,4 +2,13 @@
 
     {% block site_content %}
         <h1>Welcome</h1>
+    <div class="cal-card">
+      <div class="cal-card-day">
+        <h1>{{ today_day }}</h1>
+      </div>
+
+      <div class="cal-card-month">
+        <p>{{ today_month }}</p>
+      </div>
+    </div>
     {% endblock %}
