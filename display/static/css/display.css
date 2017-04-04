@@ -87,3 +87,16 @@ h1, h2, h3, h4 {
 .page-body {
 }
 
+.fund-container {
+  margin-top: 40px;
+  padding-top: 20px;
+  /*background-color: #beb*/
+}
+.vertical {
+    display: inline-block;
+    width: 50%;
+    height: 40px;
+    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+    transform: rotate(-90deg);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
