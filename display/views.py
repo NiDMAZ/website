@@ -8,12 +8,13 @@ import datetime
 
 def homepage(request):
     today_date = datetime.datetime.now()
-
     today_day = today_date.strftime("%d")
     today_month = today_date.strftime("%B")
+    fund_percent = 60
 
     return render(request, 'display/homepage.html', {'today_day': today_day,
-                                                     'today_month': today_month})
+                                                     'today_month': today_month,
+                                                     'fund_percent': fund_percent})
 
 
 def current_datetime(request):
