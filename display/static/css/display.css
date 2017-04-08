@@ -23,20 +23,20 @@
     text-shadow: 2px 2px 4px #000000;
 }
 
-.cal-card {
+#cal-card {
     width: 150px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
 }
 
-.cal-card-day {
+#cal-card-day {
     background-color: #4CAF50;
     color: white;
     padding: 10px;
     font-size: 50px;
 }
 
-.cal-card-month {
+#cal-card-month {
     padding: 5px;
     font-size: 20px;
     background-color: white;
@@ -57,18 +57,6 @@ h1, h2, h3, h4 {
     font-family: 'Ubuntu', sans-serif;
 }
 
-.date {
-    color: #828282;
-}
-
-.save {
-    float: right;
-}
-
-.post-form textarea, .post-form input {
-    width: 100%;
-}
-
 .top-menu, .top-menu:hover, .top-menu:visited {
     color: #ffffff;
     float: right;
@@ -76,23 +64,18 @@ h1, h2, h3, h4 {
     margin-right: 20px;
 }
 
-.post {
-    margin-bottom: 70px;
+.calendar {
+    float: right
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.post h1 a, .post h1 a:visited {
-    color: #000000;
+.site-body {
+    padding-top: 10px
 }
-
-.page-body {
-}
-
-
- .fund-container { margin-top: 10px; }
 
 .progress-bar-vertical {
-  width: 40px;
-  min-height: 200px;
+  width: 50px;
+  min-height: 250px; /* how long it will be */
   display: flex;
   align-items: flex-end;
   margin-right: 20px;
@@ -107,4 +90,3 @@ h1, h2, h3, h4 {
   -o-transition: height 0.6s ease;
   transition: height 0.6s ease;
 }
-
