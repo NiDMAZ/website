@@ -1,0 +1,20 @@
+{% extends 'display/base.html' %}
+
+{% block site_content %}
+   <h3>{{ page_title }}</h3>
+  <div>
+      {% if page_body %}
+      <p> {{ page_body|safe }} </p>
+      {% endif %}
+      </div>
+      <div>
+      <form method="post"> {% csrf_token%}
+      <table>
+      {{ form.as_table }}
+      </table>
+      <!-- <input type="submit" value={{ button_text }} /> -->
+      <button type="submit" class="btn submitbutton hover-effect">{{ button_text }} </button>
+      </form>
+      <!-- <div class="box"></div> -->
+  </div>
+{% endblock %}

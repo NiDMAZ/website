@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.utils import timezone
 from django.http import HttpResponse
 import datetime
+from .forms import VolunteerForm
 
 # Create your views here.
 
@@ -21,3 +22,25 @@ def current_datetime(request):
     now = datetime.datetime.now()
     html = "<html><body>It is now %s.</body></html>" % now
     return HttpResponse(html)
+
+
+def volunteer_page(request):
+    context = {
+        'form' : VolunteerForm(),
+        'page_title': 'Volunteer Form',
+        'button_text': 'Submit',
+        'page_body': 'Some Program Voluneteer form'
+    }
+
+    return render(request, 'display/request_page.html', context)
+
+
+def blood_drive(request):
+    context = {
+        'form' : VolunteerForm(),
+        'page_title': 'Blood Drive',
+        'button_text': 'Donate',
+        'page_body': 'blood drive donation'
+    }
+
+    return render(request, 'display/request_page.html', context)
