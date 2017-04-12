@@ -1,17 +1,27 @@
 {% extends 'display/base.html' %}
 
-{% block site_content %}
+{% block message_bar %}
+<div id="message-bar" class="drop-shadow">
+    <div class="scroll-slow">
+        <p>
+            [Salaam] &nbsp;[Welcome to Masjid As-Siddiq Display Board] &nbsp;[Various Messages will be displayed here] &nbsp;
+        </p>
+    </div>
+</div>
+{% endblock %}
 
+{% block site_content %}
 <div class="row">
     <div class="col-md-8">
-        <p class="bg-primary">Calendar</p>
         <div class="calendar">
+            <div class="item-header"><h3>Iftar Calendar</h3></div>
             <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showPrint=0&amp;showTabs=0&amp;showTz=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=assiddiq.org_ie172jchjrg5qdmr7ol4oa7vrk%40group.calendar.google.com&amp;color=%236B3304&amp;ctz=America%2FNew_York" style="border-width:0" width="750" height="600" frameborder="0" scrolling="no"></iframe>
         </div>
     </div>
 
     <div class="col-md-2">
-        <div id="cal-card" class="hover-effect">
+        <div class="item-header"><h3>Today's Date</h3></div>
+        <div id="cal-card">
             <div id="cal-card-day">
                 <h1>{{ today_day }}</h1>
             </div>
@@ -22,8 +32,8 @@
     </div>
 
     <div class="col-md-2">
-      <div class="progress progress-bar-vertical hover-effect">
-        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 60%;">
+      <div class="item-header"><h3>FundRaising Goals</h3></div>
+        <div class="progress progress-bar-vertical hover-effect" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="height: 60%;">
           <span class="sr-only">60% Complete</span>
         </div>
       </div>

@@ -22,8 +22,20 @@
     text-size:  900%;
     text-shadow: 2px 2px 4px #000000;
 }
+#message-bar {
+    border-radius: 15px;
+    background-color: #000000;
+    height: 40px;
+    padding-bottom: 60px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+   /* opacity: 0.5; */
+    border: 2px solid black;
+}
 
 #cal-card {
+    align: center;
     width: 150px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
@@ -49,10 +61,6 @@
     padding: 10px 10px 10px 40px;
 }
 
-.content {
-    margin-left: 40px;
-}
-
 h1, h2, h3, h4 {
     font-family: 'Ubuntu', sans-serif;
 }
@@ -65,22 +73,16 @@ h1, h2, h3, h4 {
 }
 
 .calendar {
-    float: right
+    float: center
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding-top: 40px
 }
 
 .site-body {
-    padding-top: 10px
+    padding-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
-.row1-item {
-    padding-top: 50px
-}
-
-.row_header {
-
-}
 
 .progress-bar-vertical {
   width: 50px;
@@ -137,4 +139,59 @@ hover-effect::after {
 
 .submitbutton:hover {
   color: white;
+}
+.item-header {
+    text-align: center;
+}
+
+.drop-shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.scroll-slow {
+ margin-top: 5px;
+ margin-left: 10px;
+ margin-right: 10px;
+ height: 50px;
+ overflow: hidden;
+ position: relative;
+ color: red;
+ font-size: 26pt;
+ }
+
+.scroll-slow p {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ margin: 0;
+ line-height: 50px;
+ text-align: center;
+ /* Starting position */
+ -moz-transform:translateX(100%);
+ -webkit-transform:translateX(100%);
+ transform:translateX(100%);
+ /* Apply animation to this element */
+ -moz-animation: scroll-slow 25s linear infinite;
+ -webkit-animation: scroll-slow 25s linear infinite;
+ animation: scroll-slow 25s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes scroll-slow {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes scroll-slow {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes scroll-slow {
+ 0%   {
+ -moz-transform: translateX(100%); /* Browser bug fix */
+ -webkit-transform: translateX(100%); /* Browser bug fix */
+ transform: translateX(100%);
+ }
+ 100% {
+ -moz-transform: translateX(-100%); /* Browser bug fix */
+ -webkit-transform: translateX(-100%); /* Browser bug fix */
+ transform: translateX(-100%);
+ }
 }

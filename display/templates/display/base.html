@@ -14,12 +14,13 @@
         <div class="page-header">
           <a href="/display"> <img src="{% static 'images/amo_cresent_rope.gif' %}"> </a>
           <div class="text-center">
-            <h1>As-Siddiq Muslim Org. <small>Masjid Display Screen</small></h1>
+            <h1>As-Siddiq Muslim Org.</h1>
             </div>
         </div>
 
-
-        <div class="content fluid-container">
+        <div class="fluid-container">
+                {% block message_bar %}
+                {% endblock %}
             <div class="site-body">
                 {% block site_content %}
                 {% endblock %}
