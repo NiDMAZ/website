@@ -22,18 +22,6 @@
     text-size:  900%;
     text-shadow: 2px 2px 4px #000000;
 }
-#message-bar {
-    border-radius: 15px;
-    background-color: #000000;
-    height: 40px;
-    padding-bottom: 60px;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-   /* opacity: 0.5; */
-    border: 2px solid black;
-}
-
 #cal-card {
     align: center;
     width: 150px;
@@ -140,6 +128,7 @@ hover-effect::after {
 .submitbutton:hover {
   color: white;
 }
+
 .item-header {
     text-align: center;
 }
@@ -147,14 +136,26 @@ hover-effect::after {
 .drop-shadow {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+#message-bar {
+    border-radius: 5px;
+    background-color: #f15922;
+    height: 40px;
+    padding-bottom: 60px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+   /* opacity: 0.5; */
+}
+
 .scroll-slow {
  margin-top: 5px;
- margin-left: 10px;
- margin-right: 10px;
+ margin-left: 5px;
+ margin-right: 5px;
  height: 50px;
  overflow: hidden;
  position: relative;
- color: red;
+ color: #fff;
  font-size: 26pt;
  }
 
@@ -165,6 +166,7 @@ hover-effect::after {
  margin: 0;
  line-height: 50px;
  text-align: center;
+ text-transform; upper;
  /* Starting position */
  -moz-transform:translateX(100%);
  -webkit-transform:translateX(100%);
