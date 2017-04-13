@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.http import HttpResponse
 import datetime
 from .forms import VolunteerForm
+from .models import FundGoal
 
 # Create your views here.
 
@@ -12,10 +13,16 @@ def homepage(request):
     today_day = today_date.strftime("%d")
     today_month = today_date.strftime("%B")
     fund_percent = 60
+    fund_details = FundGoal.objects.filter(goal_name='annual').values()[0]
+    goal_amount = ''
+    amount_collected = ''
+    amount_remain = ''
+
 
     return render(request, 'display/homepage.html', {'today_day': today_day,
                                                      'today_month': today_month,
-                                                     'fund_percent': fund_percent})
+                                                     'fund_percent': fund_percent,
+                                                     'fund_details': fund_details})
 
 
 def current_datetime(request):
