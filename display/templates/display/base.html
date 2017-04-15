@@ -1,5 +1,12 @@
 {% load staticfiles %}
 <!DOCTYPE html>
+<style>
+    body {
+    /* background-image: url("{% static 'images/BRR.gif' %}");*/
+    background-color: #FFF;
+    }
+</style>
+
 <html>
     <head>
         <title>As-Siddiq Display</title>
@@ -7,18 +14,16 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type='text/css'>
-        <link rel="stylesheet" href="{% static 'css/display.css' %}?20170411,1">
+        <link rel="stylesheet" href="{% static 'css/display.css' %}?20170415.6s">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     </head>
-    <body class="page-body">
-        <div class="page-header">
-          <a href="/display"> <img src="{% static 'images/amo_cresent_rope.gif' %}" id="page-header-left-img"> </a>
-          <div class="text-center">
-            <h1>As-Siddiq Muslim Org.</h1>
-            </div>
-             <a href="/display"> <img src="{% static 'images/bismillah.png' %}" id="page-header-right-img"> </a>
+        <div class="top">
+            <a href="/display"> <img src="{% static 'images/amo_cresent_rope.gif' %}" class="top-img-left"> </a>
+            <a href="/display" class="top-text">As-Siddiq Muslim Organization</a>
+            <!-- <a href="/display"> <img src="{% static 'images/bismillah.png' %}" class="top-img-right"> </a> -->
+            <a href="/display"> <img src="{% static 'images/ramadan-kareem.png' %}" class="top-img-right-ramadan"> </a>
         </div>
-
+     <body class="page-body">
         <div class="fluid-container">
                 {% block message_bar %}
                 {% endblock %}
