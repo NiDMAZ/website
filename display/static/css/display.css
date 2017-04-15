@@ -8,6 +8,7 @@ body img {
    /* background: radial-gradient(#3BB273, #FFF);*/
     height:100px;
     padding-left: 15px;
+    padding-right: 10px;
     padding-top: 10px;
     text-align: center;
     float: center;
@@ -24,7 +25,7 @@ body img {
 
 .top-img-right {
     float: right;
-    width: 60px;
+    width: 65px;
     display: inline-block;
 }
 
@@ -37,17 +38,11 @@ body img {
 
 .top-text {
     text-align: center;
-    text-decoration: none;
-}
-
-.top h1 {
-    text-transform: capitalize;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-family: Impact, Haettenschweiler, "sans serif";
-    text-size:  900%;
-    text-shadow: 2px 2px 4px #000000;
+     font-family: 'Ubuntu', sans-serif;
+     font-size: 40px;
+    margin-top: 40px;
+     font-weight: bold;
+     color: #FFF;
 }
 
 h1, h2, h3, h4 {
@@ -55,6 +50,10 @@ h1, h2, h3, h4 {
 }
 
 .site-body {
+    background-color: #3BB273;
+}
+
+.site-content {
     padding-top: 10px;
     margin-left: 15px;
     margin-right: 15px;
