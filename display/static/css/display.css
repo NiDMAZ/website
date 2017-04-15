@@ -129,7 +129,11 @@ h1, h2, h3, h4 {
 #fund-box {
     border-radius: 5px;
     background: radial-gradient(#FFF, #0B5BAB);
-    padding-bottom: 250px;
+    padding-bottom: 10px;
+}
+
+#fund-box p {
+    padding-left: 40px;
 }
 
 .progress-bar-vertical {
