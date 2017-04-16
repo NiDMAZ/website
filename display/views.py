@@ -3,21 +3,23 @@ from django.utils import timezone
 from django.http import HttpResponse
 import datetime
 from .forms import VolunteerForm
-from .amo_modules import FundRaisingStatus
+from .amo_modules import FundRaisingStatus, MessageBarMessages, as_currency
 
 # Create your views here.
 
 
 def homepage(request):
     fund_details = FundRaisingStatus(goal_name='annual')
+    msg_bar = MessageBarMessages()
 
     page_context = {
         'today_day': datetime.datetime.now().strftime("%d"),
         'today_month': datetime.datetime.now().strftime("%B"),
-        'goal_amount':  fund_details.goal_amount,
+        'goal_amount':  as_currency(fund_details.goal_amount),
         'goal_percent': fund_details.percent,
-        'goal_collected': fund_details.amount_collected,
-        'goal_remain': fund_details.amount_remain}
+        'goal_collected': as_currency(fund_details.amount_collected),
+        'goal_remain': as_currency(fund_details.amount_remain),
+        'messages': msg_bar.messages}
 
     return render(request, 'display/homepage.html', page_context)
 

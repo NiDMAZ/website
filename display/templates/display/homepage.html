@@ -4,7 +4,7 @@
 <div id="message-bar" class="drop-shadow">
     <div class="scroll-slow">
         <p>
-            Salaam &nbsp;Welcome to Masjid As-Siddiq Display Board&nbsp;Various Messages will be displayed here &nbsp;
+            {{ messages }}
         </p>
     </div>
 </div>
@@ -18,7 +18,7 @@
         </div>
 
     <div class="col-md-3 body-content">
-        <div class="body-content-header"><h3>Today's Date</h3></div>
+        <div class="body-content-header"><h3>Events</h3></div>
         <div id="cal-card">
             <div id="cal-card-day">
                 <h1>{{ today_day }}</h1>
@@ -31,16 +31,13 @@
 
     <div class="col-md-1 body-content">
         <div class="body-content-header"><h3>Donations</h3></div>
-        <div id="fund-box" class="drop-shadow">
-
-            <p>Goal: {{ goal_amount }}</p>
-        <div class="progress progress-bar-vertical hover-effect">
+        <p>Goal: {{ goal_amount }}</p>
+        <p>Collected: {{ goal_collected }}</p>
+        <p>Remain: {{ goal_remain }}</p>
+        <div class="progress progress-bar-vertical">
         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ goal_collected }}" aria-valuemin="0" aria-valuemax="{{ goal_amount }}" style="height: {{ goal_percent }}%;">
           <span class="sr-only">{{ goal_percent }}% Complete</span>
         </div>
-      </div>
-         <p>Collected: {{ goal_collected }}</p>
-            <p>Remain: {{ goal_remain }}</p>
         </div>
     </div>
 </div>

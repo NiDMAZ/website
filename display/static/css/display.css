@@ -12,7 +12,6 @@ body img {
     padding-top: 10px;
     text-align: center;
     float: center;
-    text-decoration: none;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -38,11 +37,18 @@ body img {
 
 .top-text {
     text-align: center;
-     font-family: 'Ubuntu', sans-serif;
-     font-size: 40px;
+    font-family: 'impact', sans-serif;
+    font-size: 60px;
     margin-top: 40px;
-     font-weight: bold;
-     color: #FFF;
+    font-weight: bold;
+    color: #FFF;
+    text-shadow: 2px 2px 4px #000000;
+    text-decoration: none;
+}
+
+.top-text:hover {
+    text-decoration: none;
+    color: #FFF;
 }
 
 h1, h2, h3, h4 {
@@ -50,7 +56,7 @@ h1, h2, h3, h4 {
 }
 
 .site-body {
-    background-color: #3BB273;
+    background-color: #FFF;
 }
 
 .site-content {
@@ -154,7 +160,7 @@ h1, h2, h3, h4 {
     width: 80px;
     min-height: 250px; /* how long it will be */
     display: flex;
-    align-items: flex-end;
+   align-items: flex-end;
     margin-left: 50px;
     float: left;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -166,6 +172,7 @@ h1, h2, h3, h4 {
     -webkit-transition: height 0.6s ease;
     -o-transition: height 0.6s ease;
     transition: height 0.6s ease;
+    display: inline-block;
 }
 
 .hover-effect {
@@ -207,12 +214,18 @@ hover-effect::after {
     color: white;
 }
 
+.body-content {
+   float: center;
+   text-align: center;
+}
 .body-content-header {
     text-align: center;
 }
 
 .body-content-header h3 {
     color: #cc6600;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .drop-shadow {

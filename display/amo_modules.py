@@ -1,4 +1,17 @@
-from .models import FundGoal
+from .models import FundGoal, MessageBar
+import datetime
+
+
+def percentage(part, whole):
+  return 100 * float(part)/float(whole)
+
+
+def as_currency(amount):
+    if amount >= 0:
+        return '${:,}'.format(amount)
+    else:
+        return '-${:,.2f}'.format(-amount)
+
 
 class FundRaisingStatus(object):
     def __init__(self, goal_name):
@@ -47,5 +60,46 @@ class FundRaisingStatus(object):
 
 
 
-def percentage(part, whole):
-  return 100 * float(part)/float(whole)
+
+class MessageBarMessages(object):
+    def __init__(self):
+        """ I am filtering messages that are tagged active, then i order by the most recent message by the message id 
+        then by the message order.
+        This  then allow me to get onl the recent message for each order
+        """
+        self._messages = None
+
+    @property
+    def messages(self):
+        message_string = ''
+        messages = self.get_latest_messages()
+        if len(messages) > 0:
+            for msg in messages:
+                message_string += '-{}- '.format(msg.message)
+        else:
+            message_string = datetime.date.today()
+
+        print message_string
+        return message_string
+
+    def get_active_messages(self):
+        active_msg = MessageBar.objects.filter(active=True).order_by('order', '-id')
+        print 'Active messages {}'.format(active_msg)
+        return active_msg
+
+    def get_latest_messages(self):
+        message_list = []
+        print 'Getting Active Messages'
+        active_messages = self.get_active_messages()
+        if len(active_messages) > 0:
+            for msg_order in range(1,5):
+               print 'Checking for Order# {!r}'.format(msg_order)
+               msg = active_messages.filter(order=msg_order).order_by('-id')
+               if len(msg)  > 0:
+                   print 'Found 1 or more message for Order# {!r}'.format(msg_order)
+                   message_list.append(msg[0])
+
+        print 'Returning list of messages: {}'.format(message_list)
+        return message_list
+
+

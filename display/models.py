@@ -4,6 +4,7 @@ from django.db import models
 
 # Create your models here.
 
+message_bar_order = ((1, 1), (2, 2), (3, 3), (4, 4))
 
 class FundRaisingEvent(models.Model):
     fundraising_event = models.CharField(max_length=30)
@@ -22,4 +23,14 @@ class FundGoal(models.Model):
 
     def __str__(self):
         return self.goal_name
+
+class MessageBar(models.Model):
+    title = models.CharField(max_length=16)
+    message = models.CharField(max_length=32)
+    active = models.BooleanField()
+    order = models.IntegerField(choices=message_bar_order)
+
+    def __str__(self):
+        return '{}-{}: {}'.format(self.order, self.title, self.active)
+
 
