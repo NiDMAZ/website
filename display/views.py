@@ -16,8 +16,10 @@ def homepage(request):
         'today_day': datetime.datetime.now().strftime("%d"),
         'today_month': datetime.datetime.now().strftime("%B"),
         'goal_amount':  as_currency(fund_details.goal_amount),
+        'goal_amount_num': fund_details.goal_amount,
         'goal_percent': fund_details.percent,
         'goal_collected': as_currency(fund_details.amount_collected),
+        'goal_collected_num': fund_details.amount_collected,
         'goal_remain': as_currency(fund_details.amount_remain),
         'messages': msg_bar.messages}
 

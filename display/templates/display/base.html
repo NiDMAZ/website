@@ -1,12 +1,5 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<style>
-    body {
-    /* background-image: url("{% static 'images/BRR.gif' %}");*/
-    background-color: #FFF;
-    }
-</style>
-
 <html>
     <head>
         <title>As-Siddiq Display</title>
@@ -14,7 +7,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type='text/css'>
-        <link rel="stylesheet" href="{% static 'css/display.css' %}?20170415.18 ">
+        <link rel="stylesheet" href="{% static 'css/display.css' %}?20170417.6">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     </head>
         <div class="top">
@@ -24,7 +17,7 @@
             <!--<a href="/display"> <img src="{% static 'images/ramadan-kareem.png' %}" class="top-img-right-ramadan"> </a>-->
         </div>
      <body class="site-body">
-        <div class="fluid-container">
+        <div class="container">
                 {% block message_bar %}
                 {% endblock %}
             <div class="site-content">

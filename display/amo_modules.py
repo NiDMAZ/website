@@ -73,9 +73,16 @@ class MessageBarMessages(object):
     def messages(self):
         message_string = ''
         messages = self.get_latest_messages()
-        if len(messages) > 0:
+        len_messages = len(messages)
+        msg_sep = '<b class="msg-sep">|</b>' if len_messages > 1 else ''
+        if len_messages > 0:
+            msg_count = 0
             for msg in messages:
-                message_string += '-{}- '.format(msg.message)
+                msg_count += 1
+                if msg_count != len_messages:
+                    message_string += '{msg} {sep} '.format(msg=msg.message, sep=msg_sep)
+                else:
+                    message_string += '{msg} {sep} '.format(msg=msg.message, sep='')
         else:
             message_string = datetime.date.today()
 
