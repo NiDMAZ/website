@@ -89,7 +89,7 @@ h1, h2, h3, h4 {
 
 .scroll-slow p {
      position: absolute;
-     width: 20000x;
+     width: 100%;
      height: 100%;
      margin: 0;
      line-height: 50px;
