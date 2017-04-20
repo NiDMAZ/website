@@ -1,7 +1,7 @@
 {% extends 'display/base.html' %}
 
 {% block message_bar %}
-<div id="message-bar" class="drop-shadow">
+<div id="message-bar" class="box_shadow">
     <div class="scroll-slow">
         <p>
             {{ messages|safe }}
@@ -12,12 +12,12 @@
 
 {% block site_content %}
 <div class="row">
-    <div class="col-md-7 body-content">
+    <div class="col-md-6 body-content">
             <div class="body-content-header"><h3>Iftar Calendar</h3></div>
             <iframe class="g-cal" src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showPrint=0&amp;showTabs=0&amp;showTz=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=assiddiq.org_ie172jchjrg5qdmr7ol4oa7vrk%40group.calendar.google.com&amp;color=%23711616&amp;ctz=America%2FNew_York" style="border-width:0; float:center;" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
         </div>
 
-    <div class="col-md-3 body-content">
+    <div class="col-md-4 body-content">
         <div class="body-content-header"><h3>Events</h3></div>
         <div id="cal-card">
             <div id="cal-card-day">
@@ -31,25 +31,17 @@
 
     <div class="col-md-2 body-content">
         <div class="body-content-header"><h3>Donations</h3></div>
-            <div class="donation-box drop-shadow">
-                <p id="head-text"><b>2017 Goal:</b> {{ goal_amount }}</p>
-                <div class="progress donation-bar-vertical">
-                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ goal_collected }}" aria-valuemin="0" aria-valuemax="{{ goal_amount }}" style="height: {{ goal_percent }}%;">
-                      <span class="sr-only">{{ goal_percent }}% Complete</span>
-                    </div>
-                    </div>
-                <p>Collected: {{ goal_collected }}</p>
-                <p>Remain: {{ goal_remain }}</p>
+        <div class="donation-box">
+            <p>2017 Goal: {{ goal_amount }}</p>
+            <div class="donate-bar box_shadow round-btm">
+                <div class="donate-bar-progress box_shadow round-btm" style="height:{{ goal_percent }}%"></div>
             </div>
+            <p>Collected: {{ goal_collected }}</p>
+            <p>Remain: {{ goal_remain }}</p>
+        </div>
+    </div>
     </div>
 </div>
-
-<div class="row">
-    <div class="col-md-1 body-content">
-        <iframe id="iframeurl" style="border: 0; width: 300px; height: 450px;" src="http://www.brackwho.com/tools/goal/engine.php?org=2017 Goal: {{ goal_amount }}&amp;number={{ goal_amount_num }}&amp;progress={{ goal_collected_num }}" frameborder="0" scrolling="no" width="320" height="240"></iframe>
-    </div>
-</div>
-
 {% endblock %}
 
 

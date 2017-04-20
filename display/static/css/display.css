@@ -1,5 +1,5 @@
 body {
-    overflow: hidden;
+   /* overflow: hidden; /* hides scroll bar */
 }
 
 .top {
@@ -152,7 +152,7 @@ h1, h2, h3, h4 {
     width: 250px;
     height: 450px;
     border-radius: 8px;
-    background-color: #E8871E   ;
+   /* background-color: #E8871E   ; */
     /* opacity: 0.9; */
 }
 
@@ -162,30 +162,51 @@ h1, h2, h3, h4 {
 }
 
 .donation-box p {
-    color: #FFF;
+    color: black;
     font-size: 1.3em;
-    text-shadow: 2px 1px 2px #000000;
+    /* text-shadow: 2px 1px 2px #000000; */
     padding-left: 10%;
 }
 
-.donation-bar-vertical {
-    width: 50%;
-    min-height: 280px; /* how long it will be */
-    display: flex;
-   align-items: flex-end;
-    margin-left: 30%;
-    float: left;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+.body-content {
 }
 
-.donation-bar-vertical .progress-bar {
-    width: 100%;
-    height: 0;
-    -webkit-transition: height 0.6s ease;
-    -o-transition: height 0.6s ease;
-    transition: height 0.6s ease;
-    display: inline-block;
+.body-content-header {
+    text-align: center;
 }
+
+.g-cal {
+    float: center;
+}
+
+.body-content-header h3 {
+    color: #cc6600;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* GENERIC CLASSES TO BE APPLIED TO OBJECTS AND DIVS */
+
+.donate-bar {
+  background-color: white;
+  width: 100px;
+  height: 300px; /* how long the donation bar will be */
+  margin: 0 auto; /* Centers in div */
+    -webkit-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    -o-transform:rotate(180deg);
+    -ms-transform:rotate(180deg);
+    transform:rotate(180deg);
+}
+
+
+.donate-bar-progress {
+  background-color: green;
+  width: 100%;
+}
+
 
 .hover-effect {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -226,24 +247,11 @@ hover-effect::after {
     color: white;
 }
 
-.body-content {
-}
-.body-content-header {
-    text-align: center;
-}
-
-.g-cal {
-    float: center;
-}
-
-.body-content-header h3 {
-    color: #cc6600;
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center;
-}
-
-.drop-shadow {
+.box_shadow {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.round-btm {
+    border-top-left-radius: .5em;
+    border-top-right-radius: .5em;
+}
