@@ -19,15 +19,22 @@
 
     <div class="col-md-4 body-content">
         <div class="body-content-header"><h3>Events</h3></div>
-        <div class="events box_shadow">
+        <div>
         {% for event in events %}
-            <div class="event">
-                <div class="date">
+            <!-- <div class="event">
+                <div class="date"> -->
+            <div class="panel panel-primary box_shadow">
+                <!--<div class="date">
                     <p>Event Date: {{ event.event_date }}</p>
-                </div>
-                <h1><a href="">{{ event.title }}</a></h1>
+                </div>-->
+                <div class=panel-heading>
+                    <h1 class="panel-title"> <a href="">{{ event.title }}</a></h1>
+            </div>
+            <div class="panel-body">
+                <p><b>Event Date:</b> {{ event.event_date }} </p>
                 <p>{{ event.detail|linebreaksbr }}</p>
             </div>
+        </div>
         {% endfor %}
         </div>
     </div>
