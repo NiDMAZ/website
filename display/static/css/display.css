@@ -255,3 +255,25 @@ hover-effect::after {
     border-top-left-radius: .5em;
     border-top-right-radius: .5em;
 }
+
+.events {
+    background-color: rgba(59, 178, 115, 0.8); /* #3BB273 */
+    width: 100%;
+    length: 100%;
+    padding-left: 15px;
+    border-radius: 5px;
+}
+
+.events h1 a {
+    color: #FFF;
+}
+
+.events .date {
+    color: black;
+}
+
+.event {
+    /* margin-bottom: 30px; */
+    padding-bottom: 10px;
+    padding-top: 20px;
+}

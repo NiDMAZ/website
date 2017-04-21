@@ -19,13 +19,16 @@
 
     <div class="col-md-4 body-content">
         <div class="body-content-header"><h3>Events</h3></div>
-        <div id="cal-card">
-            <div id="cal-card-day">
-                <h1>{{ today_day }}</h1>
+        <div class="events box_shadow">
+        {% for event in events %}
+            <div class="event">
+                <div class="date">
+                    <p>Event Date: {{ event.event_date }}</p>
+                </div>
+                <h1><a href="">{{ event.title }}</a></h1>
+                <p>{{ event.detail|linebreaksbr }}</p>
             </div>
-            <div id="cal-card-month">
-                <p>{{ today_month }}</p>
-            </div>
+        {% endfor %}
         </div>
     </div>
 

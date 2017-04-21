@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.utils import timezone
+
 
 # Create your models here.
 
@@ -22,7 +24,7 @@ class FundGoal(models.Model):
     amount_collected = models.IntegerField()
 
     def __str__(self):
-        return self.goal_name
+        return self.goal_namepyth
 
 class MessageBar(models.Model):
     title = models.CharField(max_length=16)
@@ -32,5 +34,20 @@ class MessageBar(models.Model):
 
     def __str__(self):
         return '{}-{}: {}'.format(self.order, self.title, self.active)
+
+class Events(models.Model):
+    title = models.CharField(max_length=32)
+    detail = models.TextField()
+    event_date = models.DateField()
+    created_date = models.DateTimeField(
+        default=timezone.now)
+    published_date = models.DateTimeField(
+        blank=True, null=True)
+
+    active = models.BooleanField()
+
+    def __str__(self):
+        active = "active" if self.active else "Not Active"
+        return '{} {} {}'.format(self.title, self.event_date, active)
 
 

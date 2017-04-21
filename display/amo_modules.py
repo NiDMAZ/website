@@ -1,4 +1,4 @@
-from .models import FundGoal, MessageBar
+from .models import FundGoal, MessageBar, Events
 import datetime
 
 
@@ -59,8 +59,6 @@ class FundRaisingStatus(object):
         return self.goal_details.get('goal_amount') - self.goal_details.get('amount_collected')
 
 
-
-
 class MessageBarMessages(object):
     def __init__(self):
         """ I am filtering messages that are tagged active, then i order by the most recent message by the message id 
@@ -110,3 +108,10 @@ class MessageBarMessages(object):
         return message_list
 
 
+class EventsPosts(object):
+    def __init__(self):
+        self.active_events = Events.objects.filter(active=True).order_by('event_date')
+
+
+    def get_events(self):
+        return self.active_events
