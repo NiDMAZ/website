@@ -24,7 +24,7 @@ class FundGoal(models.Model):
     amount_collected = models.IntegerField()
 
     def __str__(self):
-        return self.goal_namepyth
+        return self.goal_name
 
 class MessageBar(models.Model):
     title = models.CharField(max_length=16)
