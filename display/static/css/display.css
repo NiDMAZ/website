@@ -15,30 +15,31 @@ body {
 
 .top-img-left {
     /*width: 80px; */
-    width: 80px;
+    height: 100px;
     float: left;
     clear: both;
 }
 
 .top-img-right {
-    width: 80px;
+    height: 100px;
     float: right;
 }
 
 .top-img-right-ramadan {
     float: right;
-    width: 240px;
+    height: 220px;
     display: inline-block;
     margin-top: -20px;
 }
 
 .top-text {
     font-family: 'impact', sans-serif;
-    font-size: 3.5em;
+    font-size: 4.5em;
     color: #FFF;
     text-shadow: 2px 2px 4px #000000;
     text-decoration: none;
-    position: absolute;
+    /*position: absolute;*/
+    padding-left: 10px;
 }
 
 .top-text:hover {
@@ -190,7 +191,7 @@ h1, h2, h3, h4 {
 /* GENERIC CLASSES TO BE APPLIED TO OBJECTS AND DIVS */
 
 .donate-bar {
-  background-color: white;
+  background: white;
   width: 100px;
   height: 300px; /* how long the donation bar will be */
   margin: 0 auto; /* Centers in div */
@@ -199,11 +200,12 @@ h1, h2, h3, h4 {
     -o-transform:rotate(180deg);
     -ms-transform:rotate(180deg);
     transform:rotate(180deg);
+ border-color: 2px, #428bca;
 }
 
 
 .donate-bar-progress {
-  background-color: green;
+  background-color: rgb(59, 178, 115);
   width: 100%;
 }
 
