@@ -1,0 +1,58 @@
+body {
+   /* overflow: hidden; /* hides scroll bar */
+}
+
+.top {
+    background: linear-gradient(to right, white, #3BB273, white);
+    /* background: linear-gradient(-90deg, white, #3BB273);*/
+   /* background: radial-gradient(#3BB273, #FFF);*/
+    height:120px;
+   /* overflow: auto; */
+   padding: 1% 1% 1% 1%;
+   resize: both;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.top-img-left {
+    /*width: 80px; */
+    height: 100px;
+    float: left;
+    clear: both;
+}
+
+.top-img-right {
+    height: 100px;
+    float: right;
+}
+
+
+.top-text {
+    font-family: 'impact', sans-serif;
+    font-size: 4.5em;
+    color: #FFF;
+    text-shadow: 2px 2px 4px #000000;
+    text-decoration: none;
+    /*position: absolute;*/
+    padding-left: 10px;
+}
+
+.top-text:hover {
+    text-decoration: none;
+    color: #FFF;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.site-content {
+    background-color: #FFF;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.site-content {
+    padding-top: 10px;
+    /* margin-left: 15px;
+    margin-right: 15px; */
+}

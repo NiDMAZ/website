@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>As-Siddiq Madrasa</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/madrasa.css' %}?20170422.4">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    </head>
+        <div class="top">
+            <a href="/madrasa"> <img src="{% static 'images/amo_cresent_rope.gif' %}" class="top-img-left"> </a>
+            <a href="/madrasa" class="top-text">As-Siddiq Madrasa</a>
+            <a href="/madrasa"> <img src="{% static 'images/bismillah.png' %}" class="top-img-right"> </a>
+            <!--<a href="/display"> <img src="{% static 'images/ramadan-kareem.png' %}" class="top-img-right-ramadan"> </a>-->
+        </div>
+     <body class="site-body">
+        <div class="fluid-container">
+            <div class="site-content">
+                {% block site_content %}
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
