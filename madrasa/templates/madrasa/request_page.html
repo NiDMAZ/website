@@ -1,0 +1,25 @@
+{% extends 'madrasa/main.html' %}
+{% block content %}
+<h3>{{ page_title }}</h3>
+
+<div>
+    {% if page_body %}
+        <p>{{ page_body|safe }}</p>
+    {% endif %}
+</div>
+
+<div>
+    <form method="post"> {% csrf_token %}
+          <table>
+              {{ form.as_table }}
+          </table>
+    {% if button_text %}
+        <button type="submit" class="btn submitbutton hover-effect"> {{ button_text }}</button>
+    {% else %}
+        <button type="submit" class="btn submitbutton hover-effect">Submit</button>
+    {% endif %}
+    </form>
+</div>
+
+{% endblock %}
+

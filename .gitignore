@@ -1,5 +1,8 @@
 *.pyc
 *~
+*.log
+*000*_auto*.py
+*000*_message*.py
 __pycache__
 myvenv
 db.sqlite3

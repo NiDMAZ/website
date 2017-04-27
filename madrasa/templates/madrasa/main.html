@@ -1,0 +1,17 @@
+{% extends 'madrasa/base.html' %}
+
+{% block body %}
+<div class="page-nav">
+    <ul>
+        <li> <a href="/madrasa">Home</a></li>
+        <li> <a href="students">Students</a></li>
+        <li> <a href="classes">Classes</a></li>
+    </ul>
+</div>
+
+<div class="content container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+{% endblock %}
