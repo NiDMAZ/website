@@ -23,7 +23,7 @@
         {% for event in events %}
             <!-- <div class="event">
                 <div class="date"> -->
-            <div class="panel panel-primary box_shadow">
+            <div class="panel panel-success box_shadow">
                 <!--<div class="date">
                     <p>Event Date: {{ event.event_date }}</p>
                 </div>-->
@@ -31,7 +31,7 @@
                     <h1 class="panel-title"> <a href="">{{ event.title }}</a></h1>
             </div>
             <div class="panel-body">
-                <p><b>Event Date:</b> {{ event.event_date }} </p>
+                <p class="event-date">{{ event.event_date }}</p>
                 <p>{{ event.detail|linebreaksbr }}</p>
             </div>
         </div>

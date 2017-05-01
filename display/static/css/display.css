@@ -272,12 +272,18 @@ hover-effect::after {
     color: #FFF;
 }
 
-.events .date {
-    color: black;
+.event-date {
+    color: #666666;
+    font-weight: bold;
+    font-style: italic;
 }
 
 .event {
     /* margin-bottom: 30px; */
     padding-bottom: 10px;
     padding-top: 20px;
+}
+
+.panel-title {
+    color: #cc6600;
 }
