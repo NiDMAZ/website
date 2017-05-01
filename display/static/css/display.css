@@ -64,7 +64,8 @@ h1, h2, h3, h4 {
 #message-bar {
     border-radius: 5px;
     /* background-color: #f15922; */
-    background-color: #FF331F;
+    /* background-color: #FF331F; */
+    background-color: #993300;
     height: 40px;
     padding-bottom: 60px;
     margin-top: 10px;
@@ -171,6 +172,7 @@ h1, h2, h3, h4 {
 
 
 .body-content {
+    padding-left: 20px;
 }
 
 .body-content-header {
@@ -182,7 +184,7 @@ h1, h2, h3, h4 {
 }
 
 .body-content-header h3 {
-    color: #cc6600;
+    color: #993300;
     font-size: 30px;
     font-weight: bold;
     text-align: center;
