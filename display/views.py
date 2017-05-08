@@ -3,7 +3,8 @@ from django.utils import timezone
 from django.http import HttpResponse
 import datetime
 from .forms import VolunteerForm
-from .amo_modules import FundRaisingStatus, MessageBarMessages, as_currency, EventsPosts
+from .amo_modules import FundRaisingStatus, MessageBarMessages, as_currency, EventsPosts, \
+    is_not_june
 
 # Create your views here.
 
@@ -23,7 +24,8 @@ def homepage(request):
         'goal_collected_num': fund_details.amount_collected,
         'goal_remain': as_currency(fund_details.amount_remain),
         'messages': msg_bar.messages,
-        'events': events.get_events()}
+        'events': events.get_events(),
+        'is_not_june': is_not_june()}
 
     return render(request, 'display/homepage.html', page_context)
 
