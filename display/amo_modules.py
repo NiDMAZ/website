@@ -115,3 +115,7 @@ class EventsPosts(object):
 
     def get_events(self):
         return self.active_events
+
+
+def is_not_june():
+    return datetime.date.today() < datetime.date(2017,6,1)
