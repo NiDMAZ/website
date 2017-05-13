@@ -3,7 +3,7 @@ body {
 }
 
 .top {
-    background: linear-gradient(to right, white, #3BB273, white);
+    background: linear-gradient(to right, white, #3BB273);
     /* background: linear-gradient(-90deg, white, #3BB273);*/
    /* background: radial-gradient(#3BB273, #FFF);*/
     height:100px;
@@ -41,7 +41,7 @@ body {
 }
 
 .top-text {
-    font-family: 'impact', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: #FFF;
     text-shadow: 2px 2px 4px #000000;
     padding-left: 10px;
@@ -54,7 +54,9 @@ body {
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: font-family: 'Quicksand', sans-serif;
+    /*font-family: 'Montserrat', sans-serif;
+    /*font-family: 'Ubuntu', sans-serif;*/
 }
 
 .site-body {
@@ -67,7 +69,8 @@ h1, h2, h3, h4 {
 
 #message-bar {
     border-radius: 5px;
-    background-color: #993300;
+    /*background-color: #993300;*/
+    background-color: #ED7D3A;
     height: 40px;
     padding-bottom: 60px;
     margin-top: 10px;
@@ -183,10 +186,11 @@ h1, h2, h3, h4 {
 }
 
 .body-content-header h3 {
-    color: #993300;
+    color: #ED7D3A;
     font-size: 30px;
     font-weight: bold;
     text-align: center;
+    text-shadow: 2px 2px 4px #aaa;
 }
 
 /* GENERIC CLASSES TO BE APPLIED TO OBJECTS AND DIVS */
@@ -288,16 +292,21 @@ hover-effect::after {
 
 .footer {
     box-shadow: 8px 5px 10px #888888;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 6px;
     position: absolute;
-    border-radius: 8px;
+    /*border-radius: 8px;*/
     bottom: 0;
     width: 100%;
     /* Set the fixed height of the footer here */
-    height: 50px;
-    background-color: #2a2730;
+    height: 55px;
+    background-color: #12212f;
+    font-family: font-family: 'Quicksand', sans-serif;
+    color: white;
+    font-size: 1.2em;
 }
 
 .social-icon {
-    height: 60%;
-    padding-left: 10px;
+    height: 40px;
 }
