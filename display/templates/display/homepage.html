@@ -1,4 +1,5 @@
 {% extends 'display/base.html' %}
+{% load staticfiles %}
 
 {% block message_bar %}
 <div id="message-bar" class="box_shadow">
@@ -38,7 +39,9 @@
               </table>
             </div>
         </div>
-
+            <div class="col-md-5">
+                <img  id="feedback-icon" src="{% static 'images/feedback.png' %}" alt="feedback icon">
+            </div>
         </div>
 
     <div class="col-md-4 body-content">
