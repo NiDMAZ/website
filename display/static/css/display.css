@@ -316,6 +316,10 @@ hover-effect::after {
     text-shadow: 2px 2px 10px #aaa;
 }
 
+#feedback-icon {
+    width: 100%;
+    length: auto;
+}
 /* ================================================================ */
 /* CALL OUT BOXES */
 
