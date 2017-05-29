@@ -320,6 +320,12 @@ hover-effect::after {
     width: 100%;
     length: auto;
 }
+
+ /* CAROUSEL SETTINGS */
+.events-photo {
+    width: 100%;
+    length: auto;
+}
 /* ================================================================ */
 /* CALL OUT BOXES */
 

@@ -1,4 +1,4 @@
-from .models import FundGoal, MessageBar, Events
+from .models import FundGoal, MessageBar, CarouselEvents
 import datetime
 
 
@@ -108,12 +108,13 @@ class MessageBarMessages(object):
         return message_list
 
 
-class EventsPosts(object):
+class CarouselPosts(object):
     def __init__(self):
-        self.active_events = Events.objects.filter(active=True).order_by('event_date')
+        self.active_events = CarouselEvents.objects.filter(active=True).order_by('event_date')
 
 
     def get_events(self):
+        # TODO:(Safraz) Have this check if the event order has a duplicate and take most recent
         return self.active_events
 
 
