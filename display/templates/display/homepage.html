@@ -46,24 +46,23 @@
 
     <div class="col-md-4 body-content">
         <div class="body-content-header"><h3>Events</h3></div>
-        <div>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="8000">
+
+    <!-- Carousel items -->
+    <div class="carousel-inner">
         {% for event in events %}
-            <!-- <div class="event">
-                <div class="date"> -->
-            <div class="panel panel-success box_shadow">
-                <!--<div class="date">
-                    <p>Event Date: {{ event.event_date }}</p>
-                </div>-->
-                <div class=panel-heading>
-                    <h1 class="panel-title"> <a href="">{{ event.title }}</a></h1>
+
+            {% if  event.order == 1 %}
+                <div class="item active" >
+
+            {% else %}
+                     <div class="item" >
+            {% endif %}
+                         <img class="events-photo" src="{{ event.photo_url }}" alt="{{ event.name }}">
             </div>
-            <div class="panel-body">
-                <p class="event-date">{{ event.event_date }}</p>
-                <p>{{ event.detail|linebreaksbr }}</p>
-            </div>
-        </div>
         {% endfor %}
-        </div>
+    </div>
+</div>
     </div>
 
     <div class="col-md-2 body-content">

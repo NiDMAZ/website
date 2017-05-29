@@ -3,8 +3,8 @@ from django.utils import timezone
 from django.http import HttpResponse
 import datetime
 from .forms import VolunteerForm
-from .amo_modules import FundRaisingStatus, MessageBarMessages, as_currency, EventsPosts, \
-    is_not_june
+from .amo_modules import FundRaisingStatus, MessageBarMessages, as_currency,\
+    is_not_june, CarouselPosts
 
 # Create your views here.
 
@@ -12,7 +12,7 @@ from .amo_modules import FundRaisingStatus, MessageBarMessages, as_currency, Eve
 def homepage(request):
     fund_details = FundRaisingStatus(goal_name='annual')
     msg_bar = MessageBarMessages()
-    events = EventsPosts()
+    events = CarouselPosts()
 
     page_context = {
         'today_day': datetime.datetime.now().strftime("%d"),
