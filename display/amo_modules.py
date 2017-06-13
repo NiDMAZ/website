@@ -1,4 +1,4 @@
-from .models import FundGoal, MessageBar, CarouselEvents
+from .models import FundGoal, MessageBar, CarouselEvents, BoxWidget
 import datetime
 
 
@@ -120,3 +120,14 @@ class CarouselPosts(object):
 
 def is_not_june():
     return datetime.date.today() < datetime.date(2017,6,1)
+
+
+class BoxWidgets(object):
+    def __init__(self):
+        self.active_widgets = BoxWidget.objects.filter(active=True).order_by('order')
+
+    def get_posts(self):
+        if len(self.active_widgets) > 0:
+            return self.active_widgets
+        else:
+            return None

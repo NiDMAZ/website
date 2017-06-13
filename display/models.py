@@ -7,6 +7,7 @@ from django.utils import timezone
 # Create your models here.
 
 message_bar_order = ((1, 1), (2, 2), (3, 3), (4, 4))
+widget_box_choices = ((1,1), (2,2), (3,3))
 
 class FundRaisingEvent(models.Model):
     fundraising_event = models.CharField(max_length=30)
@@ -53,3 +54,12 @@ class CarouselEvents(models.Model):
         return '[Order:{}] [Title: {}] [EventDate: {}] [Status: {}]'.format(self.order, self.title, self.event_date, active)
 
 
+class BoxWidget(models.Model):
+    title = models.CharField(max_length=32)
+    active = models.BooleanField()
+    order = models.IntegerField(choices=widget_box_choices)
+    content = models.TextField(max_length=4096)
+
+    def __str__(self):
+        active = "ACTIVE" if self.active else "INACTIVE"
+        return '[Order:{}] [Title: {}] [Status: {}]'.format(self.order, self.title, active)

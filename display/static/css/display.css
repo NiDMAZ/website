@@ -326,6 +326,10 @@ hover-effect::after {
     width: 100%;
     length: auto;
 }
+
+.notice-board li {
+    font-size: 1em;
+}
 /* ================================================================ */
 /* CALL OUT BOXES */
 
