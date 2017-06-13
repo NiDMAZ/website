@@ -54,7 +54,7 @@ class CarouselEvents(models.Model):
         return '[Order:{}] [Title: {}] [EventDate: {}] [Status: {}]'.format(self.order, self.title, self.event_date, active)
 
 
-class BoxWidgets(models.Model):
+class BoxWidget(models.Model):
     title = models.CharField(max_length=32)
     active = models.BooleanField()
     order = models.IntegerField(choices=widget_box_choices)
