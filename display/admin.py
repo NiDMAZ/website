@@ -18,12 +18,12 @@ class CarouselEventsAdmin(admin.ModelAdmin):
 
 class GoalFundAdmin(admin.ModelAdmin):
     list_display = ('goal_name', 'goal_amount', 'amount_collected',)
-    list_editable = ('goal_name', 'goal_amount', 'amount_collected',)
+    list_editable = ('goal_amount', 'amount_collected',)
 
 
 class MessageBarAdmin(admin.ModelAdmin):
     list_display = ('title', 'order', 'active', 'message', )
-    list_editable = ('title', 'order', 'active', 'message', )
+    list_editable = ('order', 'active', 'message', )
     list_filter = ('order', 'active')
 
 
