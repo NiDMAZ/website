@@ -4,7 +4,7 @@ from django.http import HttpResponse
 import datetime
 from .forms import VolunteerForm
 from .amo_modules import FundRaisingStatus, MessageBarMessages, as_currency,\
-    is_not_june, CarouselPosts, BoxWidgets
+    is_not_june, EventPosts, BoxWidgets
 
 # Create your views here.
 
@@ -12,7 +12,7 @@ from .amo_modules import FundRaisingStatus, MessageBarMessages, as_currency,\
 def homepage(request):
     fund_details = FundRaisingStatus(goal_name='annual')
     msg_bar = MessageBarMessages()
-    events = CarouselPosts()
+    events = EventPosts()
     widgets = BoxWidgets()
 
     page_context = {

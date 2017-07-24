@@ -34,7 +34,7 @@
     <div class="carousel-inner">
         {% for event in events %}
 
-            {% if  event.order == 1 %}
+            {% if forloop.first %} <!-- THIS ALLOWS US TO TAG THE FIRST EVENT WE SEE IN THE LIST AS THE ACTIVE EVENT -->
                 <div class="item active" >
 
             {% else %}

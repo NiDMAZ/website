@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import FundGoal, MessageBar, CarouselEvents, BoxWidget
+from .models import FundGoal, MessageBar, Event, BoxWidget
 
 class BoxWidgetsAdmin(admin.ModelAdmin):
     list_display = ('title', 'order', 'active', 'content',)
@@ -8,11 +8,10 @@ class BoxWidgetsAdmin(admin.ModelAdmin):
     search_fields = ('order', 'title', 'content')
 
 
-
-class CarouselEventsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'order', 'active', 'event_date', 'created_date', 'photo_url')
+class EventsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'order', 'active', 'event_date', 'photo_url', 'publish_date', 'stop_publish_date')
     list_filter = ('order', 'active', 'event_date',)
-    list_editable = ('order', 'active', 'event_date', 'photo_url',)
+    list_editable = ('order', 'active', 'event_date', 'photo_url', 'publish_date', 'stop_publish_date')
     search_fields = ('order', 'title', 'photo_url',)
 
 
@@ -30,5 +29,5 @@ class MessageBarAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(FundGoal, GoalFundAdmin)
 admin.site.register(MessageBar, MessageBarAdmin)
-admin.site.register(CarouselEvents, CarouselEventsAdmin)
+admin.site.register(Event, EventsAdmin)
 admin.site.register(BoxWidget, BoxWidgetsAdmin)
