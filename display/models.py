@@ -37,21 +37,20 @@ class MessageBar(models.Model):
         return '{}-{}: {}'.format(self.order, self.title, self.active)
 
 
-class CarouselEvents(models.Model):
+class Event(models.Model):
     title = models.CharField(max_length=32)
     event_date = models.DateField()
-    created_date = models.DateTimeField(
-        default=timezone.now)
-    published_date = models.DateTimeField(
+    publish_date = models.DateTimeField(
         blank=True, null=True)
-
+    stop_publish_date = models.DateTimeField(
+        blank=True, null=True)
     active = models.BooleanField()
     photo_url = models.CharField(max_length=512)
     order = models.IntegerField()
 
     def __str__(self):
         active = "ACTIVE" if self.active else "INACTIVE"
-        return '[Order:{}] [Title: {}] [EventDate: {}] [Status: {}]'.format(self.order, self.title, self.event_date, active)
+        return self.title
 
 
 class BoxWidget(models.Model):

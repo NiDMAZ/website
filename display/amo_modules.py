@@ -1,5 +1,15 @@
-from .models import FundGoal, MessageBar, CarouselEvents, BoxWidget
+import logging
+from .models import FundGoal, MessageBar, Event, BoxWidget
 import datetime
+
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+handler = logging.FileHandler('amo_modules.log')
+handler.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 def percentage(part, whole):
@@ -27,14 +37,14 @@ class FundRaisingStatus(object):
                    'goal_name': '{}-DEFAULT'.format(goal_name)}
 
         if len_goal > 0 and len_goal < 2:
-            print 'Found Fund raising goal: {!r}'.format(goal_name)
+            logger.info('Found Fund raising goal: {!r}'.format(goal_name))
 
         elif len_goal == 0:
-            print 'Did not find any goals matching {!r}'.format(goal_name)
+            logger.info('Did not find any goals matching {!r}'.format(goal_name))
             return DEFAULT
 
         elif len_goal > 1:
-            print 'Found multiple matches for goal name {!r}'.format(goal_name)
+            logger.info('Found multiple matches for goal name {!r}'.format(goal_name))
 
         return goal_status.values()[0]
 
@@ -84,36 +94,39 @@ class MessageBarMessages(object):
         else:
             message_string = datetime.date.today()
 
-        print message_string
+        logger.info(message_string)
         return message_string
 
     def get_active_messages(self):
         active_msg = MessageBar.objects.filter(active=True).order_by('order', '-id')
-        print 'Active messages {}'.format(active_msg)
+        logger.info('Active messages {}'.format(active_msg))
         return active_msg
 
     def get_latest_messages(self):
         message_list = []
-        print 'Getting Active Messages'
+        logger.info('Getting Active Messages')
         active_messages = self.get_active_messages()
         if len(active_messages) > 0:
             for msg_order in range(1,5):
-               print 'Checking for Order# {!r}'.format(msg_order)
+               logger.info('Checking for Order# {!r}'.format(msg_order))
                msg = active_messages.filter(order=msg_order).order_by('-id')
                if len(msg)  > 0:
-                   print 'Found 1 or more message for Order# {!r}'.format(msg_order)
+                   logger.info('Found 1 or more message for Order# {!r}'.format(msg_order))
                    message_list.append(msg[0])
 
-        print 'Returning list of messages: {}'.format(message_list)
+        logger.info('Returning list of messages: {}'.format(message_list))
         return message_list
 
 
-class CarouselPosts(object):
+class EventPosts(object):
     def __init__(self):
-        self.active_events = CarouselEvents.objects.filter(active=True).order_by('event_date')
-
+        self.date_time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        self.active_events = Event.objects.filter(stop_publish_date__gt=self.date_time_now,
+                                                  publish_date__lte=self.date_time_now).order_by('order',
+                                                                                            'event_date')
 
     def get_events(self):
+        logger.info('[EventsPosts] Returning events that has published greater than {} and stop publish date less than {}'.format(self.date_time_now, self.date_time_now))
         # TODO:(Safraz) Have this check if the event order has a duplicate and take most recent
         return self.active_events
 
