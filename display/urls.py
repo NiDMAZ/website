@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^dates$', views.current_datetime, name='current_datetime'),
     url(r'^volunteer$', views.volunteer_page, name='volunteer'),
     url(r'^blood', views.blood_drive, name='blood'),
+    url(r'^display', views.display, name='display')
 ]

@@ -2,7 +2,6 @@ import logging
 from .models import FundGoal, MessageBar, Event, BoxWidget
 import datetime
 
-
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 handler = logging.FileHandler('amo_modules.log')
@@ -121,8 +120,11 @@ class MessageBarMessages(object):
 class EventPosts(object):
     def __init__(self):
         self.date_time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        self.active_events = Event.objects.filter(stop_publish_date__gt=self.date_time_now,
-                                                  publish_date__lte=self.date_time_now).order_by('order',
+        self.active_events = (Event.objects.filter(stop_publish_date__gt=self.date_time_now,
+                                                  active=True,
+                                                  publish_date__lte=self.date_time_now) | Event.objects.filter(stop_publish_date=None,
+                                                  active=True,
+                                                  publish_date__lte=self.date_time_now)).order_by('order',
                                                                                             'event_date')
 
     def get_events(self):
@@ -144,3 +146,11 @@ class BoxWidgets(object):
             return self.active_widgets
         else:
             return None
+
+def format_khateeb(khateeb):
+    if khateeb is None:
+        return None
+    elif khateeb.values()[0] is None:
+        return None
+    else:
+        return {'name': khateeb.values()[0], 'date': khateeb.keys()[0].strftime("%B %d, %Y")}

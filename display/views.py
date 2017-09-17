@@ -4,9 +4,9 @@ from django.http import HttpResponse
 import datetime
 from .forms import VolunteerForm
 from .amo_modules import FundRaisingStatus, MessageBarMessages, as_currency,\
-    is_not_june, EventPosts, BoxWidgets
+    is_not_june, EventPosts, BoxWidgets, format_khateeb
 
-# Create your views here.
+from amo_gdrive import *
 
 
 def homepage(request):
@@ -14,6 +14,7 @@ def homepage(request):
     msg_bar = MessageBarMessages()
     events = EventPosts()
     widgets = BoxWidgets()
+    jummah_khateeb = format_khateeb(JummahKhateebLookup.get_this_week_khateeb())
 
     page_context = {
         'today_day': datetime.datetime.now().strftime("%d"),
@@ -27,7 +28,8 @@ def homepage(request):
         'messages': msg_bar.messages,
         'events': events.get_events(),
         'is_not_june': is_not_june(),
-        'widgets': widgets.get_posts()}
+        'widgets': widgets.get_posts(),
+        'jummah_khateeb': jummah_khateeb}
 
     return render(request, 'display/homepage.html', page_context)
 
@@ -58,3 +60,11 @@ def blood_drive(request):
     }
 
     return render(request, 'display/request_page.html', context)
+
+
+def display(request):
+    jummah_khateeb = format_khateeb(JummahKhateebLookup.get_this_week_khateeb())
+    context = {
+        'jummah_khateeb': jummah_khateeb
+    }
+    return render(request, 'display/display.html', context)
