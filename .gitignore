@@ -8,3 +8,4 @@ myvenv
 db.sqlite3
 /static
 .DS_Store
+*0001_initial.py*
