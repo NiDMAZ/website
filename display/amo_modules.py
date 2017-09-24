@@ -115,7 +115,7 @@ class MessageBarMessages(object):
 
 class EventPosts(object):
     def __init__(self):
-        # TODO:
+        # TODO: FIX THIS, YOUR STILL NOT PASSING A NON_NAIVE TIME OBJECT
         # Pass non-naive timezone
         # GRABBING THE TIME ZONE IN THE settings.py file
         self.date_time_now = datetime.datetime.now(tz=pytz.UTC).strftime('%Y-%m-%d %H:%M:%S')
