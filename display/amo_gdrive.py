@@ -7,6 +7,7 @@ import time
 import datetime
 from datetime import timedelta
 from rw_lock import RWLock
+import pickle
 
 
 logger = logging.getLogger(__name__)
@@ -81,8 +82,22 @@ class JummahKhateebUpdator(GSheetReader):
         super(self.__class__, self).__init__(sheet_name='jummah_khateeb')
         self._set_lock = RWLock()
         self._cache = dict()
+        self._local_cache_file = '/var/tmp/jummah_khateeb_lcl.p'
         logger.info('**** Starting Jummah Khateeb Updator ****')
         logger.info('This will update every {} seconds'.format(self.refresh_interval))
+
+
+    @property
+    def cache_file(self):
+        try:
+            with open(self._local_cache_file, 'rb') as f:
+                cache_file = pickle.load(open(self._local_cache_file, 'rb'))
+        except Exception as e:
+            logger.warning(e)
+            cache_file = None
+        finally:
+            return cache_file
+
 
     def get_jummah_date(self, date_time=datetime.datetime.now()):
         assert type(date_time) == datetime.datetime, "Only accepts {}, recieved {}".format(datetime.datetime,
@@ -102,27 +117,41 @@ class JummahKhateebUpdator(GSheetReader):
                     return date_time.date()
 
     def update_cache(self):
-        logger.info("Updating Cache")
+        logger.info("Starting Update Cache...")
         local_cache = dict()
         logger.info('Reading Google Sheet')
+
         for i in self.get_all_hashes(index_number=0):
             if len(i.get('KHATEEB')) > 0:
                 # IGNORING EMPTY CELLS
                 logger.info('{}:{}'.format(string_to_date(i.get('DATE')), i.get('KHATEEB').title()))
                 local_cache.update({string_to_date(i.get('DATE')): i.get('KHATEEB').title()})
 
-        with self._set_lock.write_lock():
-            # TODO: Pickle the existing cache in case the new cache is empty
-            self._cache.clear()
-            self._cache.update(local_cache)
-            logger.info('cached updated')
+        if len(local_cache) > 0:
+            with self._set_lock.write_lock():
+                # TODO: Pickle the existing cache in case the new cache is empty
+                self._cache.clear()
+                self._cache.update(local_cache)
+                logger.info('Jummah Khateeb Cache updated')
+            with open(self._local_cache_file, 'wb') as f:
+                logger.info('Local cache file updated: {!r}'.format(self._local_cache_file))
+                pickle.dump(local_cache, f)
+        else:
+            local_cache = self.cache_file
+            if local_cache and len(local_cache) > 0:
+                logger.info('Cache was updated using local file cache: {}, please check google sheet {!r}'.format(self._local_cache_file, self._sheet_name))
+                with self._set_lock.write_lock():
+                    self._cache.clear()
+                    self._cache.update(local_cache)
+            else:
+                logger.error('No jummah khateeb information, - no information in google sheet: {!r} and in local cache file: {!r}'.format(self._sheet_name, self._local_cache_file))
 
 
     def _update_cache_thread(self):
         while True:
             logger.info('Update Cache Thread waking up')
             self.update_cache()
-            logger.info('Will update cache at {}'.format(datetime.datetime.now() + timedelta(seconds=self.refresh_interval)))
+            logger.info('Cache will be refreshed at: {}'.format(datetime.datetime.now() + timedelta(seconds=self.refresh_interval)))
             #logger.info('sleeping for {} seconds'.format(self.refresh_interval))
             time.sleep(self.refresh_interval)
 
