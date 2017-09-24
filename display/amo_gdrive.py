@@ -44,17 +44,34 @@ class GDriveAuthenticator(object):
         }
         # use creds to create a client to interact with the Google Drive API
         self.scope = scope
-        self.creds = ServiceAccountCredentials.from_json_keyfile_dict(self.key_file_dict, self.scope)
-        self.client = gspread.authorize(self.creds)
+        self._gc = None
+        self._credentials = None
+
+    @property
+    def credentials(self):
+        if self._credentials is None:
+            scope = self.scope
+            creds = ServiceAccountCredentials.from_json_keyfile_dict(self.key_file_dict, scope)
+            self._credentials = creds
+        return self._credentials
+
+    @property
+    def gc(self):
+        if self._gc is None:
+            self._gc = gspread.authorize(self.credentials)
+        return self._gc
+
 
 
 class GSheetReader(GDriveAuthenticator):
     def __init__(self, sheet_name):
         super(GSheetReader, self).__init__(['https://spreadsheets.google.com/feeds'])
         self._sheet_name = sheet_name
-        self.sheet = self.client.open(self._sheet_name)
 
-    def get_all_hashes(self, index_number):
+    def get_all_hashes(self, index_number=0):
+        if self.credentials.access_token_expired:
+            self.gc.login()
+        self.sheet = self.gc.open(self._sheet_name)
         return self.sheet.get_worksheet(index=index_number).get_all_records()
 
 
@@ -87,7 +104,6 @@ class JummahKhateebUpdator(GSheetReader):
     def update_cache(self):
         logger.info("Updating Cache")
         local_cache = dict()
-        # TODO: Implement a proper locking here
         logger.info('Reading Google Sheet')
         for i in self.get_all_hashes(index_number=0):
             if len(i.get('KHATEEB')) > 0:
@@ -96,6 +112,7 @@ class JummahKhateebUpdator(GSheetReader):
                 local_cache.update({string_to_date(i.get('DATE')): i.get('KHATEEB').title()})
 
         with self._set_lock.write_lock():
+            # TODO: Pickle the existing cache in case the new cache is empty
             self._cache.clear()
             self._cache.update(local_cache)
             logger.info('cached updated')
@@ -124,10 +141,13 @@ class JummahKhateebUpdator(GSheetReader):
         logger.info('Getting this weeks Khateeb')
         return self.get_khateeb_for_date()
 
-    def get_khateeb_for_date(self, date=datetime.datetime.today()):
+    def get_khateeb_for_date(self, d_date=None):
+        d_date = d_date if d_date is not None else datetime.datetime.now()
         with self._set_lock.read_lock():
-            logger.info('Getting Khateeb for {}'.format(date))
-            return {self.get_jummah_date(date): self._cache.get(self.get_jummah_date(date))}
+            logger.info('Getting Khateeb for {}'.format(d_date))
+            khateeb = {self.get_jummah_date(d_date): self._cache.get(self.get_jummah_date(d_date))}
+            logger.info('Returning: {}'.format(khateeb))
+            return khateeb
 
 
 JummahKhateebLookup = JummahKhateebUpdator()
