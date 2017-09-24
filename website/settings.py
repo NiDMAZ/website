@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 't-93j8=1kcrk9-^&$%@mg-1rg93b@@zx%+i(11m45m6zfnx80v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -120,3 +120,50 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+      'require_debug_true' : {
+        '()': 'django.utils.log.RequireDebugTrue'
+      },
+        'require_debug_false' : {
+        '()': 'django.utils.log.RequireDebugFalse'
+      },
+    },
+    'formatters': {
+        'default': {
+            'format': '[%(asctime)s] [%(name)s] [%(levelname)s] %(message)s'
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'default',
+        },
+        'file': {
+          'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': '/var/tmp/django_website.log',
+            'formatter': 'default',
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+        },
+        'display.amo_gdrive': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+        },
+        'display.amo_modules': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+        },
+    }
+
+}
