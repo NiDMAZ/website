@@ -171,6 +171,9 @@ class JummahKhateebUpdator(GSheetReader):
         return self.get_khateeb_for_date()
 
     def get_khateeb_for_date(self, d_date=None):
+        # I AM ONLY DOING THIS BECAUSE PYTHONANYWHERE KILLS MY CHILD THREADS
+        # TODO: Remove this after we can figure how to get around threading or move to AWS
+        self.update_cache()
         d_date = d_date if d_date is not None else datetime.datetime.now()
         with self._set_lock.read_lock():
             logger.info('Getting Khateeb for {}'.format(d_date))
