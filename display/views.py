@@ -1,3 +1,4 @@
+import logging
 from django.shortcuts import render
 from django.utils import timezone
 from django.http import HttpResponse
@@ -8,8 +9,10 @@ from .amo_modules import FundRaisingStatus, MessageBarMessages, as_currency,\
 
 from amo_gdrive import *
 
+logger = logging.getLogger(__name__)
 
 def homepage(request):
+    logger.info('Someone has accessed homepage')
     fund_details = FundRaisingStatus(goal_name='annual')
     msg_bar = MessageBarMessages()
     events = EventPosts()
@@ -31,6 +34,7 @@ def homepage(request):
         'widgets': widgets.get_posts(),
         'jummah_khateeb': jummah_khateeb}
 
+    logger.info(page_context)
     return render(request, 'display/homepage.html', page_context)
 
 

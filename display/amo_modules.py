@@ -1,14 +1,10 @@
 import logging
+import pytz
 from .models import FundGoal, MessageBar, Event, BoxWidget
 import datetime
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-handler = logging.FileHandler('amo_modules.log')
-handler.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
 
 
 def percentage(part, whole):
@@ -39,11 +35,11 @@ class FundRaisingStatus(object):
             logger.info('Found Fund raising goal: {!r}'.format(goal_name))
 
         elif len_goal == 0:
-            logger.info('Did not find any goals matching {!r}'.format(goal_name))
+            logger.error('Did not find any goals matching {!r}'.format(goal_name))
             return DEFAULT
 
         elif len_goal > 1:
-            logger.info('Found multiple matches for goal name {!r}'.format(goal_name))
+            logger.warning('Found multiple matches for goal name {!r}'.format(goal_name))
 
         return goal_status.values()[0]
 
@@ -119,7 +115,10 @@ class MessageBarMessages(object):
 
 class EventPosts(object):
     def __init__(self):
-        self.date_time_now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        # TODO:
+        # Pass non-naive timezone
+        # GRABBING THE TIME ZONE IN THE settings.py file
+        self.date_time_now = datetime.datetime.now(tz=pytz.UTC).strftime('%Y-%m-%d %H:%M:%S')
         self.active_events = (Event.objects.filter(stop_publish_date__gt=self.date_time_now,
                                                   active=True,
                                                   publish_date__lte=self.date_time_now) | Event.objects.filter(stop_publish_date=None,
